@@ -1,0 +1,48 @@
+mongoDB - to use for database collection but in a non-strict structure unlike SQL. 
+
+MongoDB (Mongo for short) is a non-relational database that stores data in Binary JavaScript Object Notation (JSON), or BSON format. 
+We'll access data stored in Mongo the same way we access data stored in JSON files. This method of data storage is far more flexible than SQL's model. 
+If you'd like to dig into MongoDB at a deeper level, check out the official documentation (Links to an external site.).
+
+
+1.)A Mongo database contains collections. These collections contain documents, and each document contains fields, and fields are where the data is stored.
+
+While Mongo and SQL are both databases, that's where the similarities end. 
+They handle documents differently, the storage model isn't even close, and we even interact with them in very different ways.
+
+To get started with Mongo, first open a new terminal window, but make sure your working environment is activated. Note that your environment does not need to have the same name as the one in the image.
+
+2.)Then, to start an instance, type mongod into the first line of your terminal and press return or enter on your keyboard. 
+Some Mac users may not need to run this command as Mongo is already running in the background
+
+We need to keep this tab open and active so that the Mongo instance continues to run. 
+While Mongo does have a GUI, similar to pgAdmin for Postgres, we'll be using a command line interface (CLI) to make connections within the database
+
+3.)In our terminal, create a second window or tab to use for working in Mongo. Again, make sure your environment is active.
+
+On the first line of this new window, type "mongo." This is done in a new window because, after you execute the command, 
+you cannot use the terminal for other tasks—only to send information to and from the database.
+
+After executing the command, your terminal will show a right angle bracket and a blinking cursor. This indicates that the database is active and ready for use.
+
+Either process can be easily stopped and exited from by pressing Command + C or CTRL + C on your keyboard.
+
+
+Terminal DB
+
+We don't have a fancy GUI to use while navigating through creating a database and inserting data, but that doesn't mean that our commands will be very complex. Let's create a new practice database to get used to some of the more common commands.
+
+In the terminal where Mongo is active and awaiting instruction, type "use practicedb" and then press Enter. This creates a new database named "practicedb" and makes it our active database.
+
+After typing "db" into the terminal and pressing Enter, the name of the current active database is returned. This is a quick check to make sure we'll be saving data to the right spot.
+
+You can also see how many databases are stored locally by typing "show dbs" in your terminal. There should be a few already there by default, so don't be alarmed if more than one appears that you didn't create yourself.
+
+There is also a way to check to see what data, or collections, are already in the database. Type "show collections" into the shell, or terminal, then press Enter.
+
+Nothing came up after that, right? That's a good thing. We haven't entered any data yet. We'll practice doing that next.
+
+
+
+JSON, JavaScript Object Notation, is a method that sorts and presents data in the form of key:value pairs. 
+It looks much like a Python dictionary and can be traversed through using list notation.
