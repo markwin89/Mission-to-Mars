@@ -7,62 +7,65 @@
     <title>Mission to Mars</title>
     <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    />
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
     <div class="container">
       <!-- Add Jumbotron to Header -->
-      <div class="jumbotron text-center">
-        <h1>Mission to Mars</h1>
+      <div class="jumbotron text-center" style="background-image: url(https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2015/9/11/1442003321566/dfdac019-ab9e-4476-8a08-55956432cc89-2060x1236.jpeg?width=620&quality=85&auto=format&fit=max&s=b83206ad5e66df2925b0676954d063a1); height: 400px; background-position: center; background-size: cover;">
+        <h1 class="display-3">Mission to Mars</h1>
         <!-- Add a button to activate scraping script -->
         <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
       </div>
 
       <!-- Add section for Mars News -->
-      <div class="row" id="mars-news">
-        <div class="col-md-12">
-          <div class="media">
-            <div class="media-body">
-              <h2>Latest Mars News</h2>
-              <h4 class="media-heading">{{ mars.news_title }}</h4>
-              <p>{{ mars.news_paragraph }}</p>
+      <div class="container">
+        <div class="row" id="mars-news">
+            <div class="media">
+                <div class="media-body">
+                    <h4>Latest Mars News</h4>
+                    <h5 style="color: #DC143C">{{mars.news_title}}</h5>
+                    <p style="color: #8B0000">{{mars.news_paragraph}}</p>
+                </div>
+            </div>
+        </div>
+      </div> 
+
+      <!-- Section for Featured Image and Facts table -->
+      <div class="container">
+        <div class="row" id="mars-featured-image">
+          <div class="col-md-8">
+          <h2>Featured Mars Image</h2>
+          <!-- if images is False/None/non-existent, then default to error message -->
+          <img
+            src="{{mars.featured_image | default('static/images/error.png', true) }}"
+            class="img-responsive"
+            style="max-width:100%; max-height: auto;" 
+            alt="Mars Featured Image"/>
+          </div>
+
+          <div class="col-md-4">
+          <!-- Mars Facts -->
+            <div class="row" id="mars-facts">
+            <h4>Mars Facts</h4>
+            {{ mars.facts | safe }}
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Section for Featured Image and Facts table -->
-      <div class="row" id="mars-featured-image">
-        <div class="col-md-8">
-          <h2>Featured Mars Image</h2>
-
-          <!-- if images is False/None/non-existent, then default to error message -->
-          <img
-            src="{{mars.featured_image | default('static/images/error.png', true) }}"
-            class="img-responsive"
-            alt="Responsive image"
-          />
-        </div>
-
-        <div class="col-md-4">
-          <!-- Mars Facts -->
-          <div class="row" id="mars-facts">
-            <h4>Mars Facts</h4>
-            {{ mars.facts | safe }}
-          </div>
-        </div>
-      </div>
-
       <!-- Section for Mars Hemispheres -->
+      <h4 style="padding-top: 50px; margin-top: 100px; text-align: center;">Mars Hemispheres</h4>
+      <div class="card-deck">
+          <hr>
+          <div class="col-md-12">
       <div class="row" id="mars-hemispheres">
-        <div class="page-header">
           <h2 class="text-center">Mars Hemispheres</h2>
-        </div>
+      </div>
 
         {% for hemisphere in mars.hemispheres %}
         <div class="col-md-6">
-          <div class="thumbnail">
+          <div class="thumbnail"  style="background-color: black;"></div>>
             <img src="{{hemisphere.img_url | default('static/images/error.png', true)}}" alt="...">
             <div class="caption">
               <h3>{{hemisphere.title}}</h3>
@@ -70,7 +73,7 @@
           </div>
         </div>
         {% endfor %}
+          </div>
       </div>
-    </div>
   </body>
 </html>
